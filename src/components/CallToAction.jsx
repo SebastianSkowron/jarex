@@ -15,7 +15,7 @@ export const CallToAction = ({ contactRef }) => {
                 to="contactform"
                 spy={true}
                 smooth={false}
-                className="py-4 px-6 bg-primary hover:bg-btn_primary text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md rounded-lg"
+                className="cursor-pointer py-4 px-6 bg-primary hover:bg-btn_primary text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md rounded-lg"
               >
                 Skontaktuj się
               </Link>
