@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export const ContactForm = () => {
   const notify = () => {
-    toast.success('Wiadomość wysłana, dziękujemy!', {
+    toast.success("Wiadomość wysłana, dziękujemy!", {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -15,8 +15,8 @@ export const ContactForm = () => {
       draggable: true,
       progress: undefined,
       theme: "colored",
-      });
-  }
+    });
+  };
 
   const [modal, setModal] = useState(false);
 
@@ -81,7 +81,7 @@ export const ContactForm = () => {
                 <span className="underlined-primary">Skontaktuj się</span>
               </h2>
               <p className="mb-9 text-base leading-relaxed text-light_dark">
-                Zadzwoń, napisz lub odwiedź nas osobiście. Zapraszmy do kontaktu
+                Zadzwoń, napisz lub odwiedź nas osobiście wybierając poniższą forme kontaktu. Zapraszamy do konsultacji
                 poprzez formularz dostępny na stronie, odpowiemy jak najszybciej
                 to możliwe.
               </p>
@@ -127,7 +127,7 @@ export const ContactForm = () => {
                   <h4 className="mb-1 text-xl font-bold text-primary_dark">
                     Numer telefonu
                   </h4>
-                  <p className="text-base text-light_dark">(+48) 663 209 880</p>
+                  <a href="tel:+48663209880" className="text-base text-light_dark">(+48) 663 209 880</a>
                 </div>
               </div>
               <div className="mb-8 text-left flex w-full max-w-[370px]">
@@ -145,7 +145,12 @@ export const ContactForm = () => {
                   <h4 className="mb-1 text-xl font-bold text-primary_dark">
                     Adres email
                   </h4>
-                  <p className="text-base text-light_dark">phujarex@o2.pl</p>
+                  <a
+                    href="mailto:phujarex@o2.pl"
+                    className="text-base text-light_dark"
+                  >
+                    phujarex@o2.pl
+                  </a>
                 </div>
               </div>
             </div>
@@ -225,6 +230,7 @@ export const ContactForm = () => {
                     <br />
                     <br />
                     <iframe
+                      className="relative w-full h-[400px] rounded-[3px]"
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d33196.752014038895!2d18.304881658367687!3d51.79952103832843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471add31008676dd%3A0xfc3ef39a4256999a!2s%F0%9F%A5%92%F0%9F%8D%85Jarex%20Jaros%C5%82aw%20Sztandera%20Hurtownia%20warzyw%20Kalisz.Sprzeda%C5%BC%20hurtowa%20og%C3%B3rk%C3%B3w%20i%20pomidor%C3%B3w!5e0!3m2!1spl!2spl!4v1668267697435!5m2!1spl!2spl"
                       width="600"
                       height="450"
