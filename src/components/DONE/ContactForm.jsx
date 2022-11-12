@@ -1,37 +1,37 @@
-import { forwardRef } from "react";
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
-  // import emailjs from "emailjs-com";
-  // import {
-  //   contact_form_service_id,
-  //   contact_form_template_id,
-  //   contact_form_user_id,
-  // } from "../data/data";
+import {
+  contact_form_service_id,
+  contact_form_template_id,
+  contact_form_user_id,
+} from "../data/data";
 
-  // function sendEmail(e) {
-  //   e.preventDefault();
+export const ContactForm = () => {
+  const form = useRef();
 
-  //   emailjs
-  //     .sendForm(
-  //       contact_form_service_id,
-  //       contact_form_template_id,
-  //       e.target,
-  //       contact_form_user_id
-  //     )
-  //     .then(
-  //       (result) => {
-  //         console.log(result.text);
-  //       },
-  //       (error) => {
-  //         console.log(error.text);
-  //       }
-  //     );
-  //   e.target.reset();
-  // }
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-export const ContactForm = forwardRef((props, ref) => {
+    emailjs
+      .sendForm(
+        contact_form_service_id,
+        contact_form_template_id,
+        form.current,
+        contact_form_user_id
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
   return (
     <section
-      ref={ref}
       id="contactform"
       className="relative text-center lg:text-left z-10 mt-10 mb-20 md:mb-40 overflow-hidden bg-white py-20 lg:py-[120px]"
     >
@@ -116,8 +116,7 @@ export const ContactForm = forwardRef((props, ref) => {
           </div>
           <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
             <div className="relative rounded-lg bg-white p-8 shadow-lg sm:px-12">
-              <form >
-                {/* onSubmit={sendEmail} */}
+              <form ref={form} onSubmit={sendEmail}>
                 <div className="mb-6">
                   <h1 className="mb-4 block text-base font-semibold text-primary">
                     Napisz już teraz
@@ -162,7 +161,10 @@ export const ContactForm = forwardRef((props, ref) => {
                   </button>
                   <p className="mt-3 text-xs text-left text-gray-500">
                     Wysyłając wiadomość, zgadzam się na&nbsp;
-                    <a className="text-primary underline hover:text-btn_primary hover:no-underline" href="#">
+                    <a
+                      className="text-primary underline hover:text-btn_primary hover:no-underline"
+                      href="#"
+                    >
                       przetwarzanie danych osobowych
                     </a>
                     &nbsp;w celach kontaktowych.
@@ -968,6 +970,6 @@ export const ContactForm = forwardRef((props, ref) => {
       </div>
     </section>
   );
-});
+};
 
 export default ContactForm;
