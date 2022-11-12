@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
 import {
@@ -7,7 +7,33 @@ import {
   contact_form_user_id,
 } from "../data/data";
 
+// import "../styles/modal.css";
+
 export const ContactForm = () => {
+  const [modal, setModal] = useState(false);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
+  if (modal) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
+
+  const [mapka, setMapka] = useState(false);
+
+  const toggleMapka = () => {
+    setMapka(!mapka);
+  };
+
+  if (mapka) {
+    document.body.classList.add("active-mapka");
+  } else {
+    document.body.classList.remove("active-mapka");
+  }
+
   const form = useRef();
 
   const sendEmail = (e) => {
@@ -65,10 +91,14 @@ export const ContactForm = () => {
                   <h4 className="mb-1 text-xl font-bold text-primary_dark">
                     Adres firmy
                   </h4>
-                  <p className="text-base text-light_dark">
-                    Nowy Nakwasin 65, <br />
+                  <button
+                    onClick={toggleMapka}
+                    className="text-base text-light_dark text-left"
+                  >
+                    Nowy Nakwasin 65,
+                    <br />
                     62-840, Koźminek
-                  </p>
+                  </button>
                 </div>
               </div>
               <div className="mb-8 text-left flex w-full max-w-[370px]">
@@ -104,11 +134,11 @@ export const ContactForm = () => {
                 </div>
                 <div className="w-full">
                   <h4 className="mb-1 text-xl font-bold text-primary_dark">
-                    Adresy email
+                    Adres email
                   </h4>
-                  <p className="text-base text-light_dark">
+                  {/* <p className="text-base text-light_dark">
                     kontakt@phujarex.pl
-                  </p>
+                  </p> */}
                   <p className="text-base text-light_dark">phujarex@o2.pl</p>
                 </div>
               </div>
@@ -123,7 +153,7 @@ export const ContactForm = () => {
                   </h1>
                   <input
                     type="text"
-                    name="imie_nazwisko_nazwa_firmy"
+                    name="name"
                     placeholder="Imię i nazwisko, nazwa firmy"
                     className="border-[f0f0f0] w-full rounded border py-3 px-[14px] text-base text-light_dark outline-none focus:border-primary focus-visible:shadow-none"
                   />
@@ -131,7 +161,7 @@ export const ContactForm = () => {
                 <div className="mb-6">
                   <input
                     type="email"
-                    name="adres_email"
+                    name="email_address"
                     placeholder="Adres email"
                     className="border-[f0f0f0] w-full rounded border py-3 px-[14px] text-base text-light_dark outline-none focus:border-primary focus-visible:shadow-none"
                   />
@@ -139,7 +169,7 @@ export const ContactForm = () => {
                 <div className="mb-6">
                   <input
                     type="tel"
-                    name="numer_telefonu"
+                    name="phone_number"
                     placeholder="Numer telefonu"
                     className="border-[f0f0f0] w-full rounded border py-3 px-[14px] text-base text-light_dark outline-none focus:border-primary focus-visible:shadow-none"
                   />
@@ -147,7 +177,7 @@ export const ContactForm = () => {
                 <div className="mb-6">
                   <textarea
                     rows="6"
-                    name="wiadomosc"
+                    name="message"
                     placeholder="Twoja wiadomość..."
                     className="border-[f0f0f0] w-full resize-none rounded border py-3 px-[14px] text-base text-light_dark outline-none focus:border-primary focus-visible:shadow-none"
                   ></textarea>
@@ -161,16 +191,83 @@ export const ContactForm = () => {
                   </button>
                   <p className="mt-3 text-xs text-left text-gray-500">
                     Wysyłając wiadomość, zgadzam się na&nbsp;
-                    <a
-                      className="text-primary underline hover:text-btn_primary hover:no-underline"
-                      href="#"
+                    <button
+                      onClick={toggleModal}
+                      className="text-primary underline hover:text-btn_primary hover:no-underline text-left"
                     >
                       przetwarzanie danych osobowych
-                    </a>
-                    &nbsp;w celach kontaktowych.
+                    </button>
+                    <span className="lg:hidden">&nbsp;</span>w celach kontaktowych.
                   </p>
                 </div>
               </form>
+
+              {mapka && (
+                <div className="modal">
+                  <div onClick={toggleMapka} className="modal-overlay"></div>
+                  <div className="modal-content-mapa">
+                    <h2 className="font-bold text-primary_dark">
+                      Znajdź nas na mapie
+                    </h2>
+                    <br />
+                    <br />
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d33196.752014038895!2d18.304881658367687!3d51.79952103832843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471add31008676dd%3A0xfc3ef39a4256999a!2s%F0%9F%A5%92%F0%9F%8D%85Jarex%20Jaros%C5%82aw%20Sztandera%20Hurtownia%20warzyw%20Kalisz.Sprzeda%C5%BC%20hurtowa%20og%C3%B3rk%C3%B3w%20i%20pomidor%C3%B3w!5e0!3m2!1spl!2spl!4v1668267697435!5m2!1spl!2spl"
+                      width="600"
+                      height="450"
+                      style={{ border: 0 }}
+                      allowfullscreen=""
+                      loading="lazy"
+                      referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                    <button
+                      className="close-modal text-primary underline hover:text-btn_primary hover:no-underline"
+                      onClick={toggleMapka}
+                    >
+                      Zamknij
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {modal && (
+                <div className="modal text-primary_dark text-xs lg:text-base">
+                  <div onClick={toggleModal} className="modal-overlay"></div>
+                  <div className="modal-content">
+                    <h2 className="font-bold text-primary_dark">
+                      Polityka Prywatności
+                    </h2>
+                    <br />
+                    <br />
+                    <p className="text-primary_dark">
+                      Polityka prywatności i ochrony danych osobowych określa
+                      jak zbierane, przetwarzane i przechowywane są dane osobowe
+                      podczas korzystania z witryny internetowej WWW.PHUJAREX.PL
+                      (dalej: Serwis). Serwis zbiera wyłącznie dane osobowe
+                      niezbędne do świadczenia usług drogą elektroniczną, w
+                      szczególności do kontaktu z klientem. Dane osobowe
+                      zbierane za pośreddnictwem Serwisu są przetwarzane zgodnie
+                      z Rozporządzeniem Parlamentu Europejskiego i Rady (UE)
+                      2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób
+                      fizycznych w związku z przetwarzaniem danych osobowych i w
+                      sprawie swobodnego przepływu takich danych oraz uchylenia
+                      dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie
+                      danych, dalej RODO) oraz ustawą o ochronie danych
+                      osobowych z dnia 10 maja 2018 r. <br></br>
+                      Administratorem danych osobowych zbieranych poprzez Serwis
+                      jest PHU JAREX Jarosław Sztandera, adres: Nowy Nakwasin
+                      65, 62-840 Koźminek, KRS 0000068563, NIP 8131015101, REGON
+                      690330556, adres poczty elektronicznej: phujarex@o2.pl.
+                    </p>
+                    <button
+                      className="close-modal text-primary underline hover:text-btn_primary hover:no-underline"
+                      onClick={toggleModal}
+                    >
+                      Zamknij
+                    </button>
+                  </div>
+                </div>
+              )}
 
               <div>
                 <span class="absolute -right-10 top-[90px] z-[-1]">

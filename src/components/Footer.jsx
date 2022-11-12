@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  FaFacebookSquare,
-  FaTwitterSquare,
-  FaInstagramSquare,
-} from "react-icons/fa";
+import { FaFacebookSquare } from "react-icons/fa";
 
 export const Footer = () => {
   const [date, setDate] = useState();
@@ -34,22 +30,6 @@ export const Footer = () => {
             className="text-gray-500 hover:text-primary"
           >
             <FaFacebookSquare size={24} />
-          </a>
-          <a
-            href="https://facebook.com"
-            rel="noreferrer"
-            target="_blank"
-            className="pl-1 text-gray-500 hover:text-primary"
-          >
-            <FaTwitterSquare size={24} />
-          </a>
-          <a
-            href="https://facebook.com"
-            rel="noreferrer"
-            target="_blank"
-            className="pl-1 text-gray-500 hover:text-primary"
-          >
-            <FaInstagramSquare size={24} />
           </a>
         </span>
       </div>

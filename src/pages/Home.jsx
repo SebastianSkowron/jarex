@@ -9,11 +9,11 @@ import CallToAction from "../components/CallToAction";
 function Home() {
   return (
     <>
-        {/* <Hero /> */}
-        {/* <About /> */}
-        {/* <Features /> */}
-        {/* <CallToAction /> */}
-        {/* <Products /> */}
+        <Hero />
+        <About />
+        <Features />
+        <CallToAction />
+        <Products />
         <ContactForm />
     </>
   )
