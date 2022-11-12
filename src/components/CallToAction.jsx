@@ -1,13 +1,7 @@
-import { useState } from "react";
+import React from "react";
+import { Link } from "react-scroll";
 
 export const CallToAction = ({ contactRef }) => {
-  const [name, setName] = useState("");
-
-  const onClick = (e) => {
-    e.preventDefault();
-    contactRef.current.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section className="bg-white py-6 sm:py-8 lg:py-12 mt-10 md:mt-20 mb-20 md:mb-40">
       <div className="max-w-screen-2xl px-4 md:px-8 mx-auto bg-glitter md:rounded-lg sm:rounded-none">
@@ -17,12 +11,14 @@ export const CallToAction = ({ contactRef }) => {
           </h2>
           <div className="lg:mt-0 lg:flex-shrink-0">
             <div className="mt-12 inline-flex rounded-md shadow">
-              <button
-                onClick={onClick}
+              <Link
+                to="contactform"
+                spy={true}
+                smooth={false}
                 className="py-4 px-6 bg-primary hover:bg-btn_primary text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md rounded-lg"
               >
                 Skontaktuj się
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -31,4 +27,4 @@ export const CallToAction = ({ contactRef }) => {
   );
 };
 
-export default CallToAction;  
+export default CallToAction;
