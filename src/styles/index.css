@@ -24,6 +24,13 @@
   -webkit-box-decoration-break: clone;
 }
 
+/* STICKY-NAV */
+@media only screen and (max-width: 800px) {
+  .stickeroza {
+    position: sticky;
+  }
+}
+
 /* CTA */
 
 .bg-glitter {

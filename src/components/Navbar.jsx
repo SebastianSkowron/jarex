@@ -10,17 +10,18 @@ function Navbar() {
   const [scroll, setScroll] = useState(false);
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      setScroll(window.scrollY > 920);
+      setScroll(window.scrollY > 600);
     });
   }, []);
 
   return (
     <div
-      className={`font-semibold flex items-center h-20 px-6 justify-between lg:bg-opacity-25 lg:backdrop-filter lg:backdrop-blur-lg z-50 sticky top-0 ${
+      className={`font-semibold flex items-center h-20 px-6 justify-between top-0 stickeroza z-50 lg:bg-transparent lg:visible lg:text-white ${
         scroll
           ? "bg-white shadow-sm text-primary_dark"
-          : "bg-transparent text-white backdrop-blur-0"
-      }`}
+          : "bg-white text-primary_dark backdrop-blur-0 invisible"
+      }
+      `}
     >
       <a className="flex-1 no-underline block h-8 md:invisible">
         <img

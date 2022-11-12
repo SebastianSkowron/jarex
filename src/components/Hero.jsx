@@ -8,7 +8,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <div class="hero-pattern flex justify-center items-center h-screen -mt-20">
+    <div id="home" class="hero-pattern flex justify-center items-center h-screen -mt-20">
       {/* <span className="opacity-hero"></span> */}
       <div class="max-w-screen-2xl px-4 md:px-8 mx-auto z-10 my-auto">
         <div class="container mx-auto flex  items-center justify-center flex-col">

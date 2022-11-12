@@ -1,15 +1,23 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
-import {
-  contact_form_service_id,
-  contact_form_template_id,
-  contact_form_user_id,
-} from "../data/data";
-
-// import "../styles/modal.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const ContactForm = () => {
+  const notify = () => {
+    toast.success('Wiadomość wysłana, dziękujemy!', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });
+  }
+
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => {
@@ -41,10 +49,10 @@ export const ContactForm = () => {
 
     emailjs
       .sendForm(
-        contact_form_service_id,
-        contact_form_template_id,
+        "service_xt43lvf",
+        "template_pq2ropb",
         form.current,
-        contact_form_user_id
+        "NeGsSXA2sB0cY0kO0"
       )
       .then(
         (result) => {
@@ -54,6 +62,7 @@ export const ContactForm = () => {
           console.log(error.text);
         }
       );
+    e.target.reset();
   };
 
   return (
@@ -136,9 +145,6 @@ export const ContactForm = () => {
                   <h4 className="mb-1 text-xl font-bold text-primary_dark">
                     Adres email
                   </h4>
-                  {/* <p className="text-base text-light_dark">
-                    kontakt@phujarex.pl
-                  </p> */}
                   <p className="text-base text-light_dark">phujarex@o2.pl</p>
                 </div>
               </div>
@@ -184,9 +190,15 @@ export const ContactForm = () => {
                 </div>
                 <div>
                   <button
+                    onClick={notify}
                     type="submit"
                     className="w-full rounded border border-primary bg-primary p-3 text-white transition hover:bg-btn_primary"
                   >
+                    <ToastContainer
+                      newestOnTop={false}
+                      rtl={false}
+                      pauseOnFocusLoss
+                    />
                     Wyślij wiadomość
                   </button>
                   <p className="mt-3 text-xs text-left text-gray-500">
@@ -197,7 +209,8 @@ export const ContactForm = () => {
                     >
                       przetwarzanie danych osobowych
                     </button>
-                    <span className="lg:hidden">&nbsp;</span>w celach kontaktowych.
+                    <span className="lg:hidden">&nbsp;</span>w celach
+                    kontaktowych.
                   </p>
                 </div>
               </form>
